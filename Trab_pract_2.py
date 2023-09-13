@@ -2,7 +2,9 @@
 
 años = int(input("Ingrese la cantidad de años que tiene su computador: "))
 
-if años <= 2:
+if años < 0:
+    print("Fecha ingresada inválida")
+elif años <= 2:
     print("El computador es nuevo")
 else:
     print("El computador es viejo")
@@ -190,10 +192,15 @@ else:
 
 valor_a = float(input("Ingrese el valor de a: "))
 valor_b = float(input("Ingrese el valor de b: "))
-valor_x = -valor_b/valor_a
-
-print(f"El valor de x es {valor_x}")
-
+if a==0:
+    if b==0:
+        print("La ecuación tiene infinitas soluciones (0x + 0 = 0)")
+    else:
+         print("La ecuación no tiene solución (0x + {} = 0)".format(b))
+else:
+    x = -b / a
+    print("La solución de la ecuación {}x + {} = 0 es x = {}".format(a, b, x))
+    
 
 #Ejercicio 15
 
@@ -221,7 +228,7 @@ else:
 
 num_a = float(input("Ingrese el valor de a: "))
 num_b = float(input("Ingrese el valor de b: "))
-print("Calculadora ---> 1) suma 2) multiplicación 3) resta 4) división")
+print("Calculadora ---> (1---> suma) (2---> multiplicación) (3---> resta) (4---> división"))
 func = int(input("Ingrese el número según la función que desea hacer:"))
 
 if func == 1:
@@ -233,9 +240,12 @@ elif func == 2:
 elif func == 3:
     resta = num_a-num_b
     print(resta)
-elif func == 2:
-    div = num_a/num_b
-    print(div)
+elif func == 4:
+    if num_b == 0:
+        print("Math Error!")
+    else:
+        div = num_a/num_b
+        print(div)
 else:
     print("Error")
 
