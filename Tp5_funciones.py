@@ -6,7 +6,10 @@ import funciones
 dni = input("Ingrese su número de documento: ")
 ret = funciones.num_dni(dni)
 
-print(f"Número de documento {ret} ")
+if ret:
+    print(f"Número de documento {dni} ")
+else:
+    print(f"Número de documento Falso {dni} ")
 print("---------------------------------------------")
 #Ejercicio_2
 #Escribir una función que, dado un string, retorne la longitud de la última palabra. 
@@ -26,7 +29,11 @@ back=""
 while name != back:
     dni =input("Ingrese su dni: ")
     ret = funciones.num_dni(dni)
-    funciones.carnet_id(name,ret)
+    while ret==False:
+        print("Ingrese un DNI válido:")
+        dni =input("Ingrese su dni: ")
+        ret = funciones.num_dni(dni)
+    funciones.carnet_id(name,dni)
     name = input("Ingrese su nombre completo: ")
 print("---------------------------------------------")
 
@@ -147,7 +154,11 @@ print("---------------------------------------------")
 
 num=int(input("Ingrese un número: "))
 while num !=0:
-    funciones.num_pri(num)
+    cousin = funciones.num_pri(num)
+    if cousin == True:
+        print(f"{num} es primo")
+    else:
+        print(f"{num} no es primo")
     num=int(input("Ingrese un número. Para salir ingrese 0: "))
 
 print("---------------------------------------------")
@@ -175,15 +186,21 @@ print("---------------------------------------------")
 # la cantidad de veces que aparece en el número (frecuencia). Al finalizar el programa, 
 # mostrar el factorial del mayor número ingresado.
 
-num=int(input("Ingrese un número primo: "))
+
 cicle=True
 
 while cicle != False:
-    cicle=funciones.num_pri(num)
     num=int(input("Ingrese un número. Para salir ingrese un número no primo: "))
+    cicle=funciones.num_pri(num)
+    if cicle == False:
+        break
+    print("Suma de los digitos:")
     bigger = funciones.big_num(num)
     print(funciones.sum_dig(num))
     dig = int(input("Por favor, ingresa un dígito: "))
     occurrences = funciones.count_occurrences(num, dig)
     print(f"El dígito {dig} aparece {occurrences} veces en el número {num}.")
 print(funciones.factorial_1(bigger))
+
+
+
